@@ -3,8 +3,10 @@ package com.betrybe.agrix.controllers;
 import com.betrybe.agrix.controllers.dtos.FarmDto;
 import com.betrybe.agrix.entities.Farm;
 import com.betrybe.agrix.services.FarmService;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +44,12 @@ public class FarmController {
     Farm createdFarm = farmService.create(farmDto.toEntity(farmDto));
     return ResponseEntity.status(HttpStatus.CREATED)
         .body(FarmDto.fromEntity(createdFarm));
+  }
+
+  @GetMapping
+  public ResponseEntity<List<FarmDto>> getAll() {
+    List<Farm> farmList = farmService.getAll();
+    return ResponseEntity.ok().body(farmList.stream().map(FarmDto::fromEntity).toList());
   }
 
 }
