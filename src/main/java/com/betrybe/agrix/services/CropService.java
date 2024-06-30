@@ -52,4 +52,5 @@ public class CropService {
   public List<Crop> getAllCrops() {
     return cropRepository.findAll();
   }
+  
 }
