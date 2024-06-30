@@ -14,14 +14,14 @@ public record FarmDto(
   /**
    * From entity farm dto.
    *
-   * @param createdFarm the created farm
+   * @param farm the farm
    * @return the farm dto
    */
-  public static FarmDto fromEntity(Farm createdFarm) {
+  public static FarmDto fromEntity(Farm farm) {
     FarmDto farmDto = new FarmDto(
-        createdFarm.getId(),
-        createdFarm.getName(),
-        createdFarm.getSize()
+        farm.getId(),
+        farm.getName(),
+        farm.getSize()
     );
     return farmDto;
   }
@@ -30,11 +30,9 @@ public record FarmDto(
   /**
    * To entity farm.
    *
-   * @param farmDto the farm dto
    * @return the farm
    */
-  public Farm toEntity(FarmDto farmDto) {
-    Farm farm = new Farm(farmDto.name(), farmDto.size());
-    return farm;
+  public Farm toEntity() {
+    return new Farm(name, size);
   }
 }

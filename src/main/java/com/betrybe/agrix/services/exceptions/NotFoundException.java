@@ -1,4 +1,4 @@
-package com.betrybe.agrix.exceptions;
+package com.betrybe.agrix.services.exceptions;
 
 /**
  * The type Not found exception.
