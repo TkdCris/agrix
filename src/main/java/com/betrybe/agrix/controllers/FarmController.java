@@ -86,7 +86,7 @@ public class FarmController {
   /**
    * Create crop response entity.
    *
-   * @param farmId  the farm id
+   * @param farmId          the farm id
    * @param cropCreationDto the crop dto
    * @return the response entity
    */
@@ -107,4 +107,16 @@ public class FarmController {
     return ResponseEntity.status(HttpStatus.CREATED).body(CropDto.fromEntity(createdCrop));
   }
 
+  /**
+   * Get farm crops by id response entity.
+   *
+   * @param farmId the farm id
+   * @return the response entity
+   */
+  @GetMapping("/{farmId}/crops")
+  public ResponseEntity<List<CropDto>> GetFarmCropsById(@PathVariable Long farmId) {
+    List<Crop> cropList = farmService.getFarmCropsById(farmId);
+    return ResponseEntity.ok().body(cropList.stream()
+        .map(CropDto::fromEntity).toList());
+  }
 }

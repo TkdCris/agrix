@@ -5,6 +5,7 @@ import com.betrybe.agrix.entities.Farm;
 import com.betrybe.agrix.repositories.FarmRepository;
 import com.betrybe.agrix.services.exceptions.FarmNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -89,5 +90,18 @@ public class FarmService {
     crop.setFarm(null);
 
     return cropService.createOrUpdateCrop(crop);
+  }
+
+  /**
+   * Gets farm crops by id.
+   *
+   * @param farmId the farm id
+   * @return the farm crops by id
+   */
+  public List<Crop> getFarmCropsById(Long farmId) {
+    Farm farm = farmRepository.findById(farmId)
+        .orElseThrow(FarmNotFoundException::new);
+
+    return farm.getCrops();
   }
 }
