@@ -1,7 +1,6 @@
 package com.betrybe.agrix.entities;
 
 import com.betrybe.agrix.controllers.dtos.CropCreationDto;
-import com.betrybe.agrix.controllers.dtos.CropDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

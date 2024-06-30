@@ -114,7 +114,7 @@ public class FarmController {
    * @return the response entity
    */
   @GetMapping("/{farmId}/crops")
-  public ResponseEntity<List<CropDto>> GetFarmCropsById(@PathVariable Long farmId) {
+  public ResponseEntity<List<CropDto>> getFarmCropsById(@PathVariable Long farmId) {
     List<Crop> cropList = farmService.getFarmCropsById(farmId);
     return ResponseEntity.ok().body(cropList.stream()
         .map(CropDto::fromEntity).toList());

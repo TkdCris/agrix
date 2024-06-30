@@ -3,6 +3,7 @@ package com.betrybe.agrix.services;
 import com.betrybe.agrix.entities.Crop;
 import com.betrybe.agrix.repositories.CropRepository;
 import com.betrybe.agrix.services.exceptions.CropNotFoundException;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,4 +44,12 @@ public class CropService {
   }
 
 
+  /**
+   * Gets all crops.
+   *
+   * @return the all crops
+   */
+  public List<Crop> getAllCrops() {
+    return cropRepository.findAll();
+  }
 }
